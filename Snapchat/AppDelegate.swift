@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    //Usar FireBase de forma global
+    override init(){
+        FirebaseConfiguration.shared.setLoggerLevel(FirebaseLoggerLevel.min)
+        FirebaseApp.configure()
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

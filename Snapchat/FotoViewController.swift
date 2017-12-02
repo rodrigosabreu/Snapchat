@@ -17,6 +17,7 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet var botaoProximo: UIButton!
     
     let imagePicker = UIImagePickerController()
+    let idImagem = NSUUID().uuidString
     
     @IBAction func proximoPasso(_ sender: Any) {
         
@@ -29,19 +30,20 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //Recuperar a imagem
         if let imagemSelecionada = imagem.image{
             
-            if let imagemDados = UIImageJPEGRepresentation(imagemSelecionada, 0.5){
-                imagens.child("imagem.jpg").putData(imagemDados, metadata: nil, completion: { (metaDados, erro) in
+            if let imagemDados = UIImageJPEGRepresentation(imagemSelecionada, 0.1){
+                
+                imagens.child("\(self.idImagem).jpg").putData(imagemDados, metadata: nil, completion: { (metaDados, erro) in
                     
                     if erro == nil{
+                        
                         print("Sucesso ao fazer upload do Arquivo")
+                        print(metaDados?.downloadURL()?.absoluteString)
                         
                         self.botaoProximo.isEnabled = true
                         self.botaoProximo.setTitle("Próximo", for: .normal)
                         
                     }else{
-                        
                         print("Erro ao fazer o upload do Arquivo")
-                        
                     }
                     
                 })
@@ -70,6 +72,11 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let imagemRecuperada = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         imagem.image = imagemRecuperada
+        
+        //Habilita botao proximo
+        botaoProximo.isEnabled = true
+        botaoProximo.backgroundColor = UIColor(red: 0.553, green: 0.369, blue: 0.749, alpha: 1)
+        
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
@@ -79,6 +86,10 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         // Do any additional setup after loading the view.
         imagePicker.delegate = self
+        
+        //desabilita o botao proximo
+        botaoProximo.isEnabled = false
+        botaoProximo.backgroundColor = UIColor.gray
         
     }
 

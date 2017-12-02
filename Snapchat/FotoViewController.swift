@@ -7,15 +7,51 @@
 //
 
 import UIKit
-import Photos
+import FirebaseStorage
 
 class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    
     
     @IBOutlet var imagem: UIImageView!
     @IBOutlet var descricao: UITextField!
+    @IBOutlet var botaoProximo: UIButton!
     
     let imagePicker = UIImagePickerController()
+    
+    @IBAction func proximoPasso(_ sender: Any) {
+        
+        self.botaoProximo.isEnabled = false
+        self.botaoProximo.setTitle("Carregando...", for: .normal)
+        
+        let armazenamento = Storage.storage().reference()
+        let imagens = armazenamento.child("imagens")
+        
+        //Recuperar a imagem
+        if let imagemSelecionada = imagem.image{
+            
+            if let imagemDados = UIImageJPEGRepresentation(imagemSelecionada, 0.5){
+                imagens.child("imagem.jpg").putData(imagemDados, metadata: nil, completion: { (metaDados, erro) in
+                    
+                    if erro == nil{
+                        print("Sucesso ao fazer upload do Arquivo")
+                        
+                        self.botaoProximo.isEnabled = true
+                        self.botaoProximo.setTitle("Próximo", for: .normal)
+                        
+                    }else{
+                        
+                        print("Erro ao fazer o upload do Arquivo")
+                        
+                    }
+                    
+                })
+            }
+            
+        }
+        
+        
+    }
+    
     
     @IBAction func selecionarFoto(_ sender: Any) {
         
@@ -33,7 +69,7 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let imagemRecuperada = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        imagem.image = imagemRecuperada        
+        imagem.image = imagemRecuperada
         imagePicker.dismiss(animated: true, completion: nil)
     }
     

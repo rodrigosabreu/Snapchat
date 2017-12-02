@@ -261,7 +261,7 @@
         <!--Snaps-->
         <scene sceneID="sQn-6L-i1T">
             <objects>
-                <viewController id="Ys8-Yg-tJF" sceneMemberID="viewController">
+                <viewController id="Ys8-Yg-tJF" customClass="SnapsViewController" customModule="Snapchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rWL-eM-rsg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -269,7 +269,11 @@
                         <viewLayoutGuide key="safeArea" id="klr-VG-b5q"/>
                     </view>
                     <navigationItem key="navigationItem" title="Snaps" id="S9C-uu-Jen">
-                        <barButtonItem key="leftBarButtonItem" title="Sair" id="DnF-I8-Qq6"/>
+                        <barButtonItem key="leftBarButtonItem" title="Sair" id="DnF-I8-Qq6">
+                            <connections>
+                                <action selector="sair:" destination="Ys8-Yg-tJF" id="28J-Sf-Y3S"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="oTx-X7-ZYh">
                             <connections>
                                 <segue destination="RWf-nf-xYY" kind="show" id="1PH-3P-hXg"/>
@@ -281,10 +285,10 @@
             </objects>
             <point key="canvasLocation" x="2788" y="118"/>
         </scene>
-        <!--View Controller-->
+        <!--Foto View Controller-->
         <scene sceneID="BJb-To-MRE">
             <objects>
-                <viewController id="RWf-nf-xYY" sceneMemberID="viewController">
+                <viewController id="RWf-nf-xYY" customClass="FotoViewController" customModule="Snapchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ETq-3F-LoI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

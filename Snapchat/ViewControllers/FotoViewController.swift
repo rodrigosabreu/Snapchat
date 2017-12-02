@@ -37,7 +37,9 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     if erro == nil{
                         
                         print("Sucesso ao fazer upload do Arquivo")
-                        print(metaDados?.downloadURL()?.absoluteString)
+                       
+                        let url = metaDados?.downloadURL()?.absoluteString
+                        self.performSegue(withIdentifier: "selecionarUsuarioSegue", sender: url)
                         
                         self.botaoProximo.isEnabled = true
                         self.botaoProximo.setTitle("Próximo", for: .normal)

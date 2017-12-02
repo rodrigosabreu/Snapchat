@@ -16,6 +16,8 @@
 		62BA88EB1FD2FDC800227827 /* SnapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA88EA1FD2FDC800227827 /* SnapsViewController.swift */; };
 		62BA88ED1FD2FDE800227827 /* FotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA88EC1FD2FDE800227827 /* FotoViewController.swift */; };
 		62BB4B5B1FD31F6000BCF247 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BB4B5A1FD31F6000BCF247 /* Alerta.swift */; };
+		62BB4B5D1FD32B6000BCF247 /* UsuariosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BB4B5C1FD32B6000BCF247 /* UsuariosTableViewController.swift */; };
+		62BB4B5F1FD32E2800BCF247 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BB4B5E1FD32E2800BCF247 /* Usuario.swift */; };
 		62F143381FD1EEEB006347DD /* EntrarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F143371FD1EEEB006347DD /* EntrarViewController.swift */; };
 		62F1433A1FD1EEFF006347DD /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F143391FD1EEFF006347DD /* CadastroViewController.swift */; };
 		8EB60E30B110D8769DB48051 /* Pods_Snapchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14631DADD6C2F84E4971E12 /* Pods_Snapchat.framework */; };
@@ -35,6 +37,8 @@
 		62BA88EA1FD2FDC800227827 /* SnapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapsViewController.swift; sourceTree = "<group>"; };
 		62BA88EC1FD2FDE800227827 /* FotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotoViewController.swift; sourceTree = "<group>"; };
 		62BB4B5A1FD31F6000BCF247 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
+		62BB4B5C1FD32B6000BCF247 /* UsuariosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuariosTableViewController.swift; sourceTree = "<group>"; };
+		62BB4B5E1FD32E2800BCF247 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		62F143371FD1EEEB006347DD /* EntrarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrarViewController.swift; sourceTree = "<group>"; };
 		62F143391FD1EEFF006347DD /* CadastroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
 		F14631DADD6C2F84E4971E12 /* Pods_Snapchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snapchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +100,7 @@
 		62BB4B581FD31EE400BCF247 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				62BB4B5C1FD32B6000BCF247 /* UsuariosTableViewController.swift */,
 				6201A1091FD1E79B003BA4EA /* ViewController.swift */,
 				62F143371FD1EEEB006347DD /* EntrarViewController.swift */,
 				62F143391FD1EEFF006347DD /* CadastroViewController.swift */,
@@ -109,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				62BB4B5A1FD31F6000BCF247 /* Alerta.swift */,
+				62BB4B5E1FD32E2800BCF247 /* Usuario.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,8 +266,10 @@
 			files = (
 				62BA88EB1FD2FDC800227827 /* SnapsViewController.swift in Sources */,
 				6201A10A1FD1E79B003BA4EA /* ViewController.swift in Sources */,
+				62BB4B5D1FD32B6000BCF247 /* UsuariosTableViewController.swift in Sources */,
 				6201A1081FD1E79B003BA4EA /* AppDelegate.swift in Sources */,
 				62F143381FD1EEEB006347DD /* EntrarViewController.swift in Sources */,
+				62BB4B5F1FD32E2800BCF247 /* Usuario.swift in Sources */,
 				62BA88ED1FD2FDE800227827 /* FotoViewController.swift in Sources */,
 				62F1433A1FD1EEFF006347DD /* CadastroViewController.swift in Sources */,
 				62BB4B5B1FD31F6000BCF247 /* Alerta.swift in Sources */,

@@ -45,7 +45,7 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     }else{
                         print("Erro ao fazer o upload do Arquivo")
                         let alerta = Alerta(titulo: "Upload falou", mensagem: "Erro ao salvar o arquivo, tente novamente!")
-                        present(alerta.getAlerta(), animated: true, completion: nil)
+                        self.present(alerta.getAlerta(), animated: true, completion: nil)
                     }
                     
                 })

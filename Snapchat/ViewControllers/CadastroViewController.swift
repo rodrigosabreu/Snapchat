@@ -8,10 +8,12 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class CadastroViewController: UIViewController {
 
     @IBOutlet var email: UITextField!
+    @IBOutlet var nomeCompleto: UITextField!    
     @IBOutlet var senha: UITextField!
     @IBOutlet var senhaConfirmacao: UITextField!
     
@@ -31,67 +33,85 @@ class CadastroViewController: UIViewController {
         
         //Recuperar dados difitados
         if let emailR = self.email.text {
-            if let senhaR = self.senha.text{
-                if let senhaConfirmacaoR = self.senhaConfirmacao.text{
-                    
-                    //Validar senha
-                    if senhaR == senhaConfirmacaoR{
+            if let nomeCompletoR = self.nomeCompleto.text {
+                if let senhaR = self.senha.text{
+                    if let senhaConfirmacaoR = self.senhaConfirmacao.text{
                         
-                        //Criar conta no Firebase
-                        let autenticacao = Auth.auth()
-                        autenticacao.createUser(withEmail: emailR, password: senhaR, completion: { (usuario, erro) in
+                        //Validar senha
+                        if senhaR == senhaConfirmacaoR{
                             
-                            if erro == nil{
+                            //Validacao do nome
+                            if nomeCompletoR != "" {
                                 
-                                if usuario == nil{
+                                //Criar conta no Firebase
+                                let autenticacao = Auth.auth()
+                                autenticacao.createUser(withEmail: emailR, password: senhaR, completion: { (usuario, erro) in
                                     
-                                    self.exibirMensagem(titulo: "Erro ao autenticar.", mensagem: "Problema ao realizar autenticação, tente novamente.")
+                                    if erro == nil{
+                                        
+                                        if usuario == nil{
+                                            
+                                            self.exibirMensagem(titulo: "Erro ao autenticar.", mensagem: "Problema ao realizar autenticação, tente novamente.")
+                                            
+                                        }else{
+                                            
+                                            //gravando os dados do usuario e atrelando com o Auth
+                                            let database = Database.database().reference()
+                                            let usuarios = database.child("usuarios")
+                                            
+                                            let usuarioDados = ["nome" : nomeCompletoR, "email": emailR]
+                                            usuarios.child( usuario!.uid ).setValue(usuarioDados)
+                                            
+                                            //redireciona usuario para tela principal
+                                            self.performSegue(withIdentifier: "cadastroLoginSegue", sender: nil)
+                                            
+                                        }
+                                        
+                                    }else{
+                                        
+                                        //Validando erro de cadastro
+                                        /*
+                                         ERROR_INVALID_EMAIL
+                                         ERROR_WEAK_PASSWORD
+                                         ERROR_EMAIL_ALREADY_IN_USE
+                                         */
+                                        
+                                        let erroR = erro! as NSError
+                                        if let codigoErro = erroR.userInfo["error_name"]{
+                                            
+                                            let erroTexto = codigoErro as! String
+                                            var mensagemErro = ""
+                                            switch erroTexto{
+                                            case "ERROR_INVALID_EMAIL" : mensagemErro = "E-mail inválido, digite um e-mail válido!"
+                                                break
+                                            case "ERROR_WEAK_PASSWORD" : mensagemErro = "Senha precisa ter no mínimo 6 caracteres, com letras e números!"
+                                                break
+                                            case "ERROR_EMAIL_ALREADY_IN_USE" : mensagemErro = "Esse e-mail já está sendo utilizado, crie sua conta com outro e-mail."
+                                                break
+                                            default:
+                                                mensagemErro = "Dados digitados estão incorretos."
+                                            }
+                                            
+                                            self.exibirMensagem(titulo: "Dados inválidos", mensagem: mensagemErro)
+                                            
+                                        }
+                                        
+                                    }/*Fim validacao erro Firebase*/
                                     
-                                }else{
-                                    
-                                    //redireciona usuario para tela principal
-                                    self.performSegue(withIdentifier: "cadastroLoginSegue", sender: nil)
-                                    
-                                }
-                                
+                                })
                             }else{
                                 
-                                //Validando erro de cadastro                                
-                                /*
-                                 ERROR_INVALID_EMAIL
-                                 ERROR_WEAK_PASSWORD
-                                 ERROR_EMAIL_ALREADY_IN_USE
-                                */
+                                let alerta = Alerta(titulo: "Dados incorretos", mensagem: "Digite o seu nome para prosseguir!")
+                                self.present(alerta.getAlerta(), animated: true, completion: nil)
                                 
-                                let erroR = erro! as NSError
-                                if let codigoErro = erroR.userInfo["error_name"]{
-                                    
-                                    let erroTexto = codigoErro as! String
-                                    var mensagemErro = ""
-                                    switch erroTexto{
-                                        case "ERROR_INVALID_EMAIL" : mensagemErro = "E-mail inválido, digite um e-mail válido!"
-                                            break
-                                        case "ERROR_WEAK_PASSWORD" : mensagemErro = "Senha precisa ter no mínimo 6 caracteres, com letras e números!"
-                                            break
-                                        case "ERROR_EMAIL_ALREADY_IN_USE" : mensagemErro = "Esse e-mail já está sendo utilizado, crie sua conta com outro e-mail."
-                                            break
-                                        default:
-                                            mensagemErro = "Dados digitados estão incorretos."
-                                    }
-                                
-                                    self.exibirMensagem(titulo: "Dados inválidos", mensagem: mensagemErro)
-                                    
-                                }
-                                
-                            }/*Fim validacao erro Firebase*/
+                            }
                             
-                        })
+                        }else{
+                            self.exibirMensagem(titulo: "Dados incorretos.", mensagem: "As senhas não estão iguais, digite novamente.")
+                        }/*Fim validacao senha*/
                         
-                    }else{
-                        self.exibirMensagem(titulo: "Dados incorretos.", mensagem: "As senhas não estão iguais, digite novamente.")
-                    }/*Fim validacao senha*/
-                    
-                    
+                        
+                    }
                 }
             }
         }
@@ -100,7 +120,7 @@ class CadastroViewController: UIViewController {
         
         
         
-    }
+    }/*Fechamento Método criar conta*/
     
     override func viewDidLoad() {
         super.viewDidLoad()

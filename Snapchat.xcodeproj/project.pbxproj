@@ -15,6 +15,7 @@
 		6201A11A1FD1E857003BA4EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6201A1191FD1E857003BA4EA /* GoogleService-Info.plist */; };
 		62BA88EB1FD2FDC800227827 /* SnapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA88EA1FD2FDC800227827 /* SnapsViewController.swift */; };
 		62BA88ED1FD2FDE800227827 /* FotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA88EC1FD2FDE800227827 /* FotoViewController.swift */; };
+		62BB4B5B1FD31F6000BCF247 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BB4B5A1FD31F6000BCF247 /* Alerta.swift */; };
 		62F143381FD1EEEB006347DD /* EntrarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F143371FD1EEEB006347DD /* EntrarViewController.swift */; };
 		62F1433A1FD1EEFF006347DD /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F143391FD1EEFF006347DD /* CadastroViewController.swift */; };
 		8EB60E30B110D8769DB48051 /* Pods_Snapchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14631DADD6C2F84E4971E12 /* Pods_Snapchat.framework */; };
@@ -33,6 +34,7 @@
 		6201A1191FD1E857003BA4EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		62BA88EA1FD2FDC800227827 /* SnapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapsViewController.swift; sourceTree = "<group>"; };
 		62BA88EC1FD2FDE800227827 /* FotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotoViewController.swift; sourceTree = "<group>"; };
+		62BB4B5A1FD31F6000BCF247 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		62F143371FD1EEEB006347DD /* EntrarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrarViewController.swift; sourceTree = "<group>"; };
 		62F143391FD1EEFF006347DD /* CadastroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
 		F14631DADD6C2F84E4971E12 /* Pods_Snapchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snapchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,12 +81,9 @@
 		6201A1061FD1E79B003BA4EA /* Snapchat */ = {
 			isa = PBXGroup;
 			children = (
+				62BB4B591FD31F0200BCF247 /* Models */,
+				62BB4B581FD31EE400BCF247 /* ViewControllers */,
 				6201A1071FD1E79B003BA4EA /* AppDelegate.swift */,
-				6201A1091FD1E79B003BA4EA /* ViewController.swift */,
-				62F143371FD1EEEB006347DD /* EntrarViewController.swift */,
-				62F143391FD1EEFF006347DD /* CadastroViewController.swift */,
-				62BA88EA1FD2FDC800227827 /* SnapsViewController.swift */,
-				62BA88EC1FD2FDE800227827 /* FotoViewController.swift */,
 				6201A10B1FD1E79B003BA4EA /* Main.storyboard */,
 				6201A10E1FD1E79B003BA4EA /* Assets.xcassets */,
 				6201A1101FD1E79B003BA4EA /* LaunchScreen.storyboard */,
@@ -92,6 +91,26 @@
 				6201A1191FD1E857003BA4EA /* GoogleService-Info.plist */,
 			);
 			path = Snapchat;
+			sourceTree = "<group>";
+		};
+		62BB4B581FD31EE400BCF247 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6201A1091FD1E79B003BA4EA /* ViewController.swift */,
+				62F143371FD1EEEB006347DD /* EntrarViewController.swift */,
+				62F143391FD1EEFF006347DD /* CadastroViewController.swift */,
+				62BA88EA1FD2FDC800227827 /* SnapsViewController.swift */,
+				62BA88EC1FD2FDE800227827 /* FotoViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		62BB4B591FD31F0200BCF247 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				62BB4B5A1FD31F6000BCF247 /* Alerta.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A8D767AE6D198627D3D4AC5E /* Pods */ = {
@@ -245,6 +264,7 @@
 				62F143381FD1EEEB006347DD /* EntrarViewController.swift in Sources */,
 				62BA88ED1FD2FDE800227827 /* FotoViewController.swift in Sources */,
 				62F1433A1FD1EEFF006347DD /* CadastroViewController.swift in Sources */,
+				62BB4B5B1FD31F6000BCF247 /* Alerta.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

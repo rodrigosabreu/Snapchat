@@ -42,11 +42,21 @@ class CadastroViewController: UIViewController {
                         autenticacao.createUser(withEmail: emailR, password: senhaR, completion: { (usuario, erro) in
                             
                             if erro == nil{
-                                print("Sucesso ao cadastrar usuário.")
+                                
+                                if usuario == nil{
+                                    
+                                    self.exibirMensagem(titulo: "Erro ao autenticar.", mensagem: "Problema ao realizar autenticação, tente novamente.")
+                                    
+                                }else{
+                                    
+                                    //redireciona usuario para tela principal
+                                    self.performSegue(withIdentifier: "cadastroLoginSegue", sender: nil)
+                                    
+                                }
+                                
                             }else{
                                 
-                                //Validando erro de cadastro
-                                
+                                //Validando erro de cadastro                                
                                 /*
                                  ERROR_INVALID_EMAIL
                                  ERROR_WEAK_PASSWORD

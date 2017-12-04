@@ -66,11 +66,38 @@ class UsuariosTableViewController: UITableViewController {
         // Configure the cell...
         let usuario = self.usuarios[ indexPath.row ]
         celula.textLabel?.text = usuario.nome
+        celula.detailTextLabel?.text = usuario.email
 
         return celula
     }
  
 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let usuarioSelecionado = self.usuarios[ indexPath.row ]
+        let idUsuarioSelecionado = usuarioSelecionado.uid
+        
+        //Recupera referencia do banco de dados
+        let database = Database.database().reference()
+        let usuarios = database.child("usuarios")
+        let snaps = usuarios.child( idUsuarioSelecionado ).child("snaps")//Criando o nó Snaps
+        
+        let snap = [
+            "de": "rodrigo.s.abreu@gmail.com",
+            "nome": "rodrigo",
+            "descricao": "Flor para Rafaela",
+            "urlImagem": "www.firebase.com...",
+            "idImagem": "342343245234123"
+        ]
+        
+        snaps.childByAutoId().setValue(snap) //Criando ID automatico para o nó para cada snap
+        
+        
+    }
+    
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -56,7 +56,23 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         
         
+    }/*Fim método próximo passo*/
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "selecionarUsuarioSegue" {
+            
+            let usuarioViewController = segue.destination as! UsuariosTableViewController
+            
+            usuarioViewController.descricao = self.descricao.text!
+            usuarioViewController.urlImagem = sender as! String
+            usuarioViewController.idImagem = self.idImagem
+            
+        }
+        
     }
+    
     
     
     @IBAction func selecionarFoto(_ sender: Any) {

@@ -282,11 +282,37 @@
         <!--Snaps-->
         <scene sceneID="sQn-6L-i1T">
             <objects>
-                <viewController id="Ys8-Yg-tJF" customClass="SnapsViewController" customModule="Snapchat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Ys8-Yg-tJF" customClass="SnapsViewController" customModule="Snapchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rWL-eM-rsg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Chk-1p-J0D">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celula" id="bnK-Fn-dxf">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bnK-Fn-dxf" id="TYs-T9-jnT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ys8-Yg-tJF" id="eVr-yL-tGs"/>
+                                    <outlet property="delegate" destination="Ys8-Yg-tJF" id="762-bB-RHS"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Chk-1p-J0D" firstAttribute="leading" secondItem="klr-VG-b5q" secondAttribute="leading" id="7c3-yR-Yh8"/>
+                            <constraint firstItem="Chk-1p-J0D" firstAttribute="top" secondItem="klr-VG-b5q" secondAttribute="top" id="CDU-oY-YvD"/>
+                            <constraint firstItem="Chk-1p-J0D" firstAttribute="bottom" secondItem="klr-VG-b5q" secondAttribute="bottom" id="aC8-7F-9zO"/>
+                            <constraint firstItem="Chk-1p-J0D" firstAttribute="trailing" secondItem="klr-VG-b5q" secondAttribute="trailing" id="zBk-cU-wvD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="klr-VG-b5q"/>
                     </view>
                     <navigationItem key="navigationItem" title="Snaps" id="S9C-uu-Jen">
@@ -301,10 +327,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Chk-1p-J0D" id="DAP-jH-0nS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lnP-H8-U9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2788" y="118"/>
+            <point key="canvasLocation" x="2788" y="117.39130434782609"/>
         </scene>
         <!--Foto-->
         <scene sceneID="BJb-To-MRE">
@@ -373,7 +402,7 @@
             </objects>
             <point key="canvasLocation" x="3532" y="117.39130434782609"/>
         </scene>
-        <!--Usuarios Table View Controller-->
+        <!--Usuáros-->
         <scene sceneID="LGa-IU-pn3">
             <objects>
                 <tableViewController id="5Do-hV-6ye" customClass="UsuariosTableViewController" customModule="Snapchat" customModuleProvider="target" sceneMemberID="viewController">
@@ -412,6 +441,7 @@
                             <outlet property="delegate" destination="5Do-hV-6ye" id="dsg-5J-MZE"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Usuáros" id="i1h-Lq-N2G"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CgT-DD-U0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

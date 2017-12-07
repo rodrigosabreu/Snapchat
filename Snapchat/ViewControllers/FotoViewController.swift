@@ -77,13 +77,17 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func selecionarFoto(_ sender: Any) {
         
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+        //if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
                         
             imagePicker.sourceType = .savedPhotosAlbum
             present(self.imagePicker, animated: true, completion: nil)
             //No info.plist é necessário solicitar permissão para o usuário utilizar a camera
             
-        }
+        //}
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     
